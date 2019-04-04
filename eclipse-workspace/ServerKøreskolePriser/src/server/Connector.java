@@ -14,7 +14,7 @@ public class Connector {
 	private final int    PORT     = 3306;
 	private final String DATABASE = "koreskole";
 	private final String USERNAME = "root"; 
-	private final String PASSWORD = "abc123";
+	private final String PASSWORD = "kodekode";
 	private Connection connection;
 
 	public Connector() {

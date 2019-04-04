@@ -10,10 +10,10 @@ public class KøreskolePriserImplementering extends UnicastRemoteObject implemen
 	Integer antalKøreskoler = 0;
 	ArrayList<String> oprettedeKøreskoler = new ArrayList<>();
 	JDBC jdbc = new JDBC();
-	
+
 
 	protected KøreskolePriserImplementering() throws RemoteException {super();}
-	
+
 	//-------------------------admin---------------------------------//	
 	@Override
 	public boolean logIndAdmin(String adminBrugernavn, String adminKodeord) throws RemoteException {
@@ -28,40 +28,42 @@ public class KøreskolePriserImplementering extends UnicastRemoteObject implemen
 
 	@Override
 	public void sletKøreskole(String adminBrugernavn, String adminKodeord, Køreskole køreskole) throws RemoteException {
-		if (køreskoler.containsKey(køreskole.id)) {
-
+		if (logIndAdmin(adminBrugernavn, adminKodeord)) {
+			if (køreskoler.containsKey(køreskole.id)) {
+				
+			}
 		}
 	}
 
 	@Override
 	public void sletKøreskoleTilbud(String adminBrugernavn, String adminKodeord, Køreskole køreskole) throws RemoteException {
-	
+
 	}
 
 	@Override
 	public void opretKøreskole(String adminBrugernavn, String adminKodeord, Køreskole køreskole) throws RemoteException {
-		
-		
-		
+
+
+
 		if (!oprettedeKøreskoler.contains(køreskole.id)) {
-			
-		jdbc.opretkøreskole(køreskole);
-		System.out.println("køreskole oprettet " + køreskole.id);
-		oprettedeKøreskoler.add(køreskole.id);
+
+			jdbc.opretkøreskole(køreskole);
+			System.out.println("køreskole oprettet " + køreskole.id);
+			oprettedeKøreskoler.add(køreskole.id);
 
 		}		
-		
-		
+
+
 	}
-	
+
 	private void opdaterTilbud() {
-		
+
 	}
 
 
-	
+
 	//---------------------køreskoler-----------------------//
-	
+
 	@Override
 	public boolean logInd(String brugernavn, String kodeord) throws RemoteException {
 		// TODO Auto-generated method stub
@@ -71,19 +73,19 @@ public class KøreskolePriserImplementering extends UnicastRemoteObject implemen
 	@Override
 	public void opretTilbud(String brugernavn, String kodeord, Tilbud tilbud) throws RemoteException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void aendreTilbud(String brugernavn, String kodeord, int tilbudID, Tilbud tilbud) throws RemoteException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void sletTilbud(String brugernavn, String kodeord, int tilbudID) throws RemoteException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -101,7 +103,7 @@ public class KøreskolePriserImplementering extends UnicastRemoteObject implemen
 	@Override
 	public void opretKommentarer(String kommentar, int rating) throws RemoteException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
