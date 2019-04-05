@@ -16,6 +16,7 @@ public class Main {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		/*
 		JDBC j = null;
 		try {
 		j = new JDBC();
@@ -62,7 +63,7 @@ public class Main {
 		} catch (Exception e) {
 			e.printStackTrace();		}
 		System.exit(0);
-
+		*/
 	}
 
 }
