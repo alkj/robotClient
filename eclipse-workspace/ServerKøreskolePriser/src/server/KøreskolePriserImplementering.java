@@ -9,7 +9,7 @@ public class KøreskolePriserImplementering extends UnicastRemoteObject implemen
 	HashMap<Integer, Køreskole> køreskoler = new HashMap<>();
 	Integer antalKøreskoler = 0;
 	ArrayList<String> oprettedeKøreskoler = new ArrayList<>();
-	JDBC jdbc = new JDBC();
+	JDBC j = new JDBC();
 
 
 	protected KøreskolePriserImplementering() throws RemoteException {super();}
@@ -42,16 +42,17 @@ public class KøreskolePriserImplementering extends UnicastRemoteObject implemen
 
 	@Override
 	public void opretKøreskole(String adminBrugernavn, String adminKodeord, Køreskole køreskole) throws RemoteException {
-
-
-
-		if (!oprettedeKøreskoler.contains(køreskole.id)) {
-
-			jdbc.opretkøreskole(køreskole);
-			System.out.println("køreskole oprettet " + køreskole.id);
-			oprettedeKøreskoler.add(køreskole.id);
-
-		}		
+		
+		j.opretkøreskole(køreskole);
+		
+//		
+//		if (!oprettedeKøreskoler.contains(køreskole.id)) {
+//
+//			jdbc.opretkøreskole(køreskole);
+//			System.out.println("køreskole oprettet " + køreskole.id);
+//			oprettedeKøreskoler.add(køreskole.id);
+//
+//		}		
 
 
 	}

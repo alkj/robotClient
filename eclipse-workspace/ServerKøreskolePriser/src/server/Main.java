@@ -25,14 +25,26 @@ public class Main {
         
         j.usekoreskoleDatabase();
         
-        j.opretkøreskole(k);
+//        j.opretkøreskole(k);
         
         Køreskole ks = j.getKøreskole("s165478");
         
         System.out.println(ks.toString());
         
+//        Tilbud t = new Tilbud();
+//        t.koreskole_id=k.id;
+//        t.beskrivelse="jeg er en smart fyr fra holte";
+//        t.bilmarke="andet";
+//        t.bilstørrelse="stor";
+//        t.korekort_type="b";
+//        t.køn="mand";
+//        t.lynkursus=0;
+//        t.pris=15000;
+//        t.tilgængelige_dage=0000011;
+//        j.opretTilbud(t);
         
-        
+ 		j.con.close();
+ 		System.exit(0);
  		
 	}
 

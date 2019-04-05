@@ -79,5 +79,31 @@ public class JDBC {
 		return k;
 
 	}
+	
+	public void opretTilbud(Tilbud t) {
+		String s = "INSERT INTO tilbud(koreskole_id, pris, korekort_type, lynkursus, bilmarke, bilstorrelse, kon, tilgangelige_dage, beskrivelse) "
+				+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		int i = 0;
+		//		+ "values('s165477', 9500, 'b', 0, 'andet', 'mellem', 'kvinde', 1110000, 'jeg er en frisk fyr')";
+		try {
+			PreparedStatement p = con.prepareStatement(s);
+			p.setString(1, t.koreskole_id);
+			p.setInt(2, t.pris);
+			p.setString(3, t.korekort_type);
+			p.setInt(4, t.lynkursus);
+			p.setString(5, t.bilmarke);
+			p.setString(6, t.bilstørrelse);
+			p.setString(7, t.køn);
+			p.setInt(8, t.tilgængelige_dage);
+			p.setString(9, t.beskrivelse);
+			
+			i=p.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("update(s) " + i);
+		
+	}
 
 }
