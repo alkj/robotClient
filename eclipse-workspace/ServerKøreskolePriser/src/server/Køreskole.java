@@ -1,8 +1,10 @@
 package server;
 
+import java.io.Serializable;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-public class Køreskole {
+public class Køreskole extends  UnicastRemoteObject implements Serializable {
 	String id;
 	String navn;
 	String adresse;
@@ -10,7 +12,7 @@ public class Køreskole {
 	int telefonnummer;
 	String mail;
 	
-	public Køreskole() {
+	public Køreskole() throws Exception {
 		// TODO Auto-generated constructor stub
 	}
 	

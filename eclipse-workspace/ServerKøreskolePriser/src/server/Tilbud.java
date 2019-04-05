@@ -1,6 +1,14 @@
 package server;
 
-public class Tilbud {
+import java.io.Serializable;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
+public class Tilbud extends UnicastRemoteObject implements Serializable {
+	
+	public Tilbud() throws Exception {
+		// TODO Auto-generated constructor stub
+	}
 	
 	String koreskole_id;
 	int pris;
@@ -9,13 +17,8 @@ public class Tilbud {
 	String bilmarke;
 	String bilstørrelse;
 	String køn;
-	int tilgængelige_dage;
 	String beskrivelse;
-	
-	
-	public Tilbud() {
-		
-	}
+	TilgængeligeDage tilgængeligeDage;	
 
 
 }

@@ -19,7 +19,7 @@ public class KøreskolePriserImplementering extends UnicastRemoteObject implemen
 	public boolean logIndAdmin(String adminBrugernavn, String adminKodeord) throws RemoteException {
 		if (adminBrugernavn.equals("s165477")&&adminKodeord.equals("kodekode")
 				||adminBrugernavn.equals("s175132")&&adminKodeord.equals("DS2019")	) {
-			System.out.println("-----------admin bruger-------------");
+//			System.out.println("-----------admin bruger-------------");
 			return true;
 		} else {
 			return false;
@@ -73,7 +73,9 @@ public class KøreskolePriserImplementering extends UnicastRemoteObject implemen
 
 	@Override
 	public void opretTilbud(String brugernavn, String kodeord, Tilbud tilbud) throws RemoteException {
-		// TODO Auto-generated method stub
+
+		j.opretTilbud(tilbud);
+
 
 	}
 
