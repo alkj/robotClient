@@ -23,7 +23,15 @@ public class Main {
         k.postnummer=4000;
         k.telefonnummer=88898876;
         
+        j.usekoreskoleDatabase();
+        
         j.opretkøreskole(k);
+        
+        Køreskole ks = j.getKøreskole("s165478");
+        
+        System.out.println(ks.toString());
+        
+        
         
  		
 	}

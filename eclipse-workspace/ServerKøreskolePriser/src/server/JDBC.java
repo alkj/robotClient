@@ -8,28 +8,25 @@ import java.sql.SQLException;
 public class JDBC {
 	Connector c;
 	Connection con;
-	
+
 	public JDBC() {
-        this.c = new Connector();
-        this.con = c.getConnection();
+		this.c = new Connector();
+		this.con = c.getConnection();
 	}
-	
-	public void opretkøreskole(Køreskole køreskole) {
-		
-		/*
-		
+
+	public void usekoreskoleDatabase() {
 		try {
-			c.doUpdate("INSERT INTO koreskoler(koreskole_id, koreskolenavn, adresse, postnummer, telefonnummer, mail) values ('"
-					+køreskole.id+"', '"+køreskole.navn+"', '"+køreskole.adresse+"', "+køreskole.postnummer+", "+køreskole.telefonnummer+", '"+køreskole.mail+"');");
+			String s = "use koreskole";
+			PreparedStatement p = con.prepareStatement(s);
+			p.execute();
 		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			
+			// TODO: handle exception
 		}
-		*/
-		
-		//-----------------prepared statement---------------------------_//
-		
+	}
+
+	public void opretkøreskole(Køreskole køreskole) {
+
+
 		String s = "INSERT INTO koreskoler(koreskole_id, koreskolenavn, adresse, postnummer, telefonnummer, mail) values (?, ?, ?, ?, ?, ?);";
 		int updated = 0;
 		try {
@@ -40,22 +37,47 @@ public class JDBC {
 			p.setInt(4, køreskole.postnummer);
 			p.setInt(5, køreskole.telefonnummer);
 			p.setString(6, køreskole.mail);
-			
-			updated = p.executeUpdate();
-						
-		} catch (SQLException e) {
 
+			updated = p.executeUpdate();
+
+		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			System.out.println(updated+" record(s) updated");
 		}
-		
-		//"INSERT INTO koreskoler(koreskole_id, koreskolenavn, adresse, postnummer, telefonnummer, mail) values ('s165477', 'bjarnes koreskole', 'hurtigvej 234', 4000, 88888888, 'testest@mail.dk');"
 
-		
-		
-		
 	}
-	
-	
+
+	public Køreskole getKøreskole(String id) {
+		String s = "SELECT * FROM koreskoler where koreskole_id = ?;";
+		ResultSet rs = null;
+		Køreskole k = new Køreskole();
+		try {
+			PreparedStatement p = con.prepareStatement(s);
+			p.setString(1, id);
+			rs = p.executeQuery();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+
+		try {
+			while(rs.next()) {
+				k.id = rs.getString(1);
+				k.navn = rs.getString(2);
+				k.adresse = rs.getString(3);
+				k.postnummer = rs.getInt(4);
+				k.telefonnummer = rs.getInt(5);
+				k.mail = rs.getString(6);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+
+		return k;
+
+	}
+
 }
